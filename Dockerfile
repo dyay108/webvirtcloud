@@ -25,6 +25,7 @@ RUN apt-get update -qqy \
 	libssl-dev \
 	libsasl2-dev \
 	libsasl2-modules \
+	sassc \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY . /srv/webvirtcloud
