@@ -40,7 +40,10 @@ RUN python3 -m venv venv && \
 	pip3 cache purge && \
 	chown -R www-data:www-data /srv/webvirtcloud
 
-RUN cp webvirtcloud/settings.py.template webvirtcloud/settings.py
+RUN cp webvirtcloud/settings.py.template webvirtcloud/settings.py && \
+	. venv/bin/activate && \
+	SECRET_KEY=$(python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())') && \
+	sed -i "s/SECRET_KEY = \"\"/SECRET_KEY = \"$SECRET_KEY\"/" webvirtcloud/settings.py
 
 RUN . venv/bin/activate && \
 	python3 manage.py makemigrations && \
