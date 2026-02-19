@@ -21,11 +21,14 @@ RUN apt-get update -qqy \
 	nginx \
 	pkg-config \
 	gcc \
+	g++ \
+	make \
 	libldap2-dev \
 	libssl-dev \
 	libsasl2-dev \
 	libsasl2-modules \
 	sassc \
+	libsass-dev \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY . /srv/webvirtcloud
