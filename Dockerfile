@@ -40,6 +40,8 @@ RUN python3 -m venv venv && \
 	pip3 cache purge && \
 	chown -R www-data:www-data /srv/webvirtcloud
 
+RUN cp webvirtcloud/settings.py.template webvirtcloud/settings.py
+
 RUN . venv/bin/activate && \
 	python3 manage.py makemigrations && \
     python3 manage.py migrate && \
